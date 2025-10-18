@@ -146,25 +146,25 @@ function Product() {
         return <></>;
 
     }
-    
+
     const selectedFileExcel = (fileInput) => {
-        if(fileInput !== undefined){
-            if(fileInput.length > 0){
+        if (fileInput !== undefined) {
+            if (fileInput.length > 0) {
                 setFileExcel(fileInput[0]);
             }
         }
     }
     const hadleUploadExcel = async () => {
-        try{
-            const formData  = new FormData();
+        try {
+            const formData = new FormData();
             formData.append('fileExcel', fileExcel);
-            const res = await axios.post(config.apiPath + '/product/uploadFromExcel', formData,{
+            const res = await axios.post(config.apiPath + '/product/uploadFromExcel', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': localStorage.getItem('token')
                 }
             });
-            if(res.data.message === 'success'){
+            if (res.data.message === 'success') {
                 Swal.fire({
                     title: 'บันทึกข้อมูลสำเร็จ',
                     text: 'success',
@@ -177,7 +177,7 @@ function Product() {
 
             }
         }
-        catch(e){
+        catch (e) {
             Swal.fire({
                 title: 'error',
                 text: e.message,
@@ -195,7 +195,7 @@ function Product() {
         <button onClick={clearForm} className="btn btn-primary mr-2" data-toggle='modal' data-target='#modalProduct'>
             <i className="fa fa-plus mr-2"></i> เพิ่มรายการ
         </button>
-        <button  onClick={clearFormExcel} className="btn btn-success" data-toggle='modal' data-target='#modalExcel'>
+        <button onClick={clearFormExcel} className="btn btn-success" data-toggle='modal' data-target='#modalExcel'>
             <i className="fa fa-arrow-down mr-2"></i>Import from excel
         </button>
         <table className=" mt-3 table table-bordered table-striped">
@@ -264,7 +264,7 @@ function Product() {
         </MyModal>
         <MyModal id='modalExcel' title='เลือกไฟล์'>
             <div>เลือกไฟล์</div>
-            <input className="form-control" type='file' ref = {refExcel} onChange={e=> selectedFileExcel(e.target.files)} >
+            <input className="form-control" type='file' ref={refExcel} onChange={e => selectedFileExcel(e.target.files)} >
             </input>
             <button className="mt-3 btn btn-primary" onClick={hadleUploadExcel}>
                 <i className="fa fa-check mr-2"></i> Save

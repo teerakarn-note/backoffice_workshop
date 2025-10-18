@@ -77,25 +77,9 @@ function Sidebar() {
           </div>
 
         </div>
-
-        {/* <!-- SidebarSearch Form --> */}
-        {/* <div class="form-inline">
-          <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" />
-            <div class="input-group-append">
-              <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-              </button>
-            </div>
-          </div>
-        </div> */}
-
         {/* <!-- Sidebar Menu --> */}
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-
-            
             <li class="nav-header">MENU</li>
             <li class="nav-item">
               {/* ลิ้งหน้า */}
@@ -108,12 +92,12 @@ function Sidebar() {
               </Link>
             </li>
             <li class="nav-item">
-              <a href="pages/gallery.html" class="nav-link">
-                <i class="nav-icon far fa-image"></i>
+              <Link to="/billSale" class="nav-link">
+                <i class="nav-icon fa fa-list"></i>
                 <p>
-                  Gallery
+                  รายงานยอดขาย
                 </p>
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
               <a href="pages/kanban.html" class="nav-link">

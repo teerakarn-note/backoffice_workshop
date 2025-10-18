@@ -7,6 +7,7 @@ import{
 import SingIn from './page/backoffice/Singin';
 import Home from './page/backoffice/Home';
 import Product from './page/backoffice/Product';
+import BillSale from './page/backoffice/BillSale';
 
 const router = createBrowserRouter([
 
@@ -22,8 +23,12 @@ const router = createBrowserRouter([
     element: <Home/>
   },
   {
-    path : 'product',
+    path : '/product',
     element : <Product />
+  },
+  {
+    path : '/billSale',
+    element : <BillSale />
   }
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
