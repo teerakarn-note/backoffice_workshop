@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import MyModal from "../../components/Mymodal";
 function BillSale() {
   const [billSales, setBillSales] = useState([]);
+  const [billSaleDetails, setBillSaleDetails] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,18 +26,18 @@ function BillSale() {
       })
     }
   }
-  const openModalInfo = async(item) =>{
-    try{
-      const res= await axios.get(config.apiPath + '/api/sale/billInfo/'+item.id,config.headers());
+  const openModalInfo = async (item) => {
+    try {
+      const res = await axios.get(config.apiPath + '/api/sale/billInfo/' + item.id, config.headers());
 
-      if(res.data.result !== undefined){
-        
+      if (res.data.result !== undefined) {
+        setBillSaleDetails(res.data.result);
       }
     }
-    catch(e){
+    catch (e) {
       Swal.fire({
         title: 'error',
-        text : e.message,
+        text: e.message,
         icon: 'error'
       })
     }
@@ -55,8 +56,8 @@ function BillSale() {
             <th>ที่อยู่</th>
             <th>วันที่ชำระเงิน</th>
             <th>เวลา</th>
-            <th width ='600px'></th>
-            
+            <th width='600px'></th>
+
           </thead>
           <tbody>
             {billSales.length > 0 ? billSales.map(item =>
@@ -67,10 +68,10 @@ function BillSale() {
                 <td>{dayjs(item.payDate).format('DD/MM/YYYY')}</td>
                 <td>{item.payTime}</td>
                 <td className="text-center">
-                  <button className="btn btn-secondary mr-1" 
-                  // ผูกกับ modal
-                  data-toggle = 'modal'data-target = '#modalInfo' 
-                  onClick={e=> openModalInfo(item)}>
+                  <button className="btn btn-secondary mr-1"
+                    // ผูกกับ modal
+                    data-toggle='modal' data-target='#modalInfo'
+                    onClick={e => openModalInfo(item)}>
                     <i className="fa fa-file-alt mr-2"></i>รายการ
                   </button>
                   <button className="btn btn-info mr-1">
@@ -89,8 +90,26 @@ function BillSale() {
         </table>
       </div>
     </div>
-    <MyModal id = 'modalInfo' title = 'รายการของบิล'>
-
+    <MyModal id='modalInfo' title='รายการของบิล'>
+      <table className="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>รายการ</th>
+            <th className="text-right">ราคา</th>
+            <th className="text-right">จำนวน</th>
+          </tr>
+        </thead>
+        <tbody>
+          {billSaleDetails.length > 0 ? billSaleDetails.map(item =>
+            <tr key = {item.id}>
+              {/* เมื่อมีการ join ตาราง  */}
+              <td>{item.Product.name}</td>
+              <td className="text-right">{item.price}</td>
+              <td className="text-right">1</td>
+            </tr>
+          ) : <></>}
+        </tbody>
+      </table>
     </MyModal>
   </Backoffice>
 }
