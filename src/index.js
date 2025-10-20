@@ -8,7 +8,7 @@ import SingIn from './page/backoffice/Singin';
 import Home from './page/backoffice/Home';
 import Product from './page/backoffice/Product';
 import BillSale from './page/backoffice/BillSale';
-
+import DashBorad from './page/backoffice/DashBoard';
 const router = createBrowserRouter([
 
   // การกำหนดเส้นทางของแอปพลิเคชัน
@@ -29,7 +29,13 @@ const router = createBrowserRouter([
   {
     path : '/billSale',
     element : <BillSale />
+  },
+  {
+    path : '/DashBoard',
+    element : <DashBorad/>
+
   }
+
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

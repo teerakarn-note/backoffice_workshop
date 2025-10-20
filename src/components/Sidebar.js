@@ -58,7 +58,7 @@ function Sidebar() {
       {/* <!-- Brand Logo --> */}
       <a href="index3.html" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">NoteBackoffice</span>
       </a>
 
       {/* <!-- Sidebar --> */}
@@ -82,7 +82,14 @@ function Sidebar() {
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-header">MENU</li>
             <li class="nav-item">
-              {/* ลิ้งหน้า */}
+              <Link to="/dashboard" class="nav-link">
+                <i class="nav-icon fas fa-columns"></i>
+                <p>
+                  DashBoard
+                </p>
+              </Link>
+            </li>
+            <li class="nav-item">
               <Link to="/product" class="nav-link">
                 <i class="nav-icon fa fa-box"></i>
                 <p>
@@ -98,14 +105,6 @@ function Sidebar() {
                   รายงานยอดขาย
                 </p>
               </Link>
-            </li>
-            <li class="nav-item">
-              <a href="pages/kanban.html" class="nav-link">
-                <i class="nav-icon fas fa-columns"></i>
-                <p>
-                  Kanban Board
-                </p>
-              </a>
             </li>
           </ul>
         </nav>
